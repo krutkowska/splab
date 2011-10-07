@@ -1,0 +1,101 @@
+http://wbzyl.inf.ug.edu.pl/sp/labs01
+
+Laboratorium 1
+W żadnym z poniższych zadań nie wolno używać programu mc.
+Polecenia: mkdir, cp, mv, touch, tree. Ścieżki względne i bezwzględne: ~, .., ..
+1. Używając linii poleceń stwórz strukturę katalogów:
+temp
+|-- dom
+|-- nauka
+|   |-- c
+|   |-- logo
+|   `-- pascal
+`-- praca
+    |-- dokumenty
+    `-- zlecenia
+        |-- niezrealizowane
+        `-- zrealizowane
+mkdir temp
+cd temp/
+mkdir dom nauka praca
+cd nauka/
+mkdir c logo pascal
+cd ../praca/
+mkdir dokumenty zlecenia
+cd zlecenia/
+mkdir niezrealizowane zrealizowane
+
+tree ../../../temp/  		lub 			tree ~/splabs/temp
+
+2. Przejdź do katalogu dom i utwórz katalog wazne-sprawy.
+
+cd ~/splabs/temp/dom
+mkdir wazne-sprawy
+
+3. Wejdź do katalogu wazne-sprawy i utwórz tam pusty plik rachunki.txt.
+
+cd wazne-sprawy/
+touch rachunki.txt
+
+4. Będąc w katalogu wazne-sprawy skopiuj plik rachunki.txt do katalogu zrealizowane.
+cp rachunki.txt ../../praca/zlecenia/zrealizowane/ 
+
+5. Przejdź do katalogu zrealizowane i zmień nazwę pliku rachunki.txt na wykonano.txt.
+
+cd ../../praca/zlecenia/zrealizowane 
+mv rachunki.txt wykonano.txt
+
+Polecenia: split, cat, diff
+6. Utwórz plik wykonano.txt wielkości 11 bajtów, następnie podziel go na pliki wielkości 5 bajtów. W ten sposób otrzymasz 3 pliki. (split)
+cat > wykonano.txt
+12345678901
+ctrl+d
+
+split -b 5 wykonano.txt
+
+7. Będąc w katalogu logo skopiuj powyżej otrzymane 3 pliki do katalogu dokumenty.
+
+cd ../../../nauka/logo
+cp ~/splabs/temp/praca/zlecenia/zrealizowane/x* ~/splabs/temp/praca/dokumenty 
+
+8. Będąc w katalogu dokumenty połącz skopiowane 3 pliki w plik odtworzono.txt, tak aby otrzymać plik o zawartości identycznej z wykonano.txt. Następnie plik odtworzono.txt skopiuj do katalogu wazne-sprawy.
+
+cat x* > odtworzono.txt		lub		cat xaa xab xac > odtworzono.txt
+
+cp odtworzono.txt ../../dom/wazne-sprawy/ 
+
+9. Będąc w katalogu wazne-sprawy sprawdź, czy są jakieś różnice w zawartości plików wykonano.txt i odtworzono.txt.
+
+diff odtworzono.txt ../../praca/zlecenia/zrealizowane/wykonano.txt 
+
+brak komunikatu wynikowego oznacza brak jakichkolwiek różnic!
+
+10. Wyświetl kalendarz na październik 2009 r. (cal)
+Wyświetl kalendarz na wrzesień, październik i listopad 2009 r. z miesiącami obok siebie (cal):
+
+cal -my 10 2009
+cal -3my 10 2009
+
+Wyświetl kalendarz na październik, listopad i grudzień 2009 r. w taki sposób:
+
+     październik             listopad               grudzień
+ni po wt śr cz pi so   ni po wt śr cz pi so   ni po wt śr cz pi so
+             1  2  3    1  2  3  4  5  6  7          1  2  3  4  5
+ 4  5  6  7  8  9 10    8  9 10 11 12 13 14    6  7  8  9 10 11 12
+11 12 13 14 15 16 17   15 16 17 18 19 20 21   13 14 15 16 17 18 19
+...                    ...                    ...
+cal -3my 11 2009 
+
+I jeszcze raz na wrzesień i październik oraz na październik i listopad 2009 r z miesiącami obok siebie (cal, cut?):
+     październik             listopad
+ni po wt śr cz pi so   ni po wt śr cz pi so
+             1  2  3    1  2  3  4  5  6  7
+ 4  5  6  7  8  9 10    8  9 10 11 12 13 14
+11 12 13 14 15 16 17   15 16 17 18 19 20 21
+...                    ...
+(cal -my 9 2009; cal -my 10 2009) | cat 
+(cal -my 10 2009; cal -my 11 2009) | cat 
+
+11. Jaki był dzień tygodnia 25 maja 1975 r. (cal i date)
+
+date -d 19750525 +%A
