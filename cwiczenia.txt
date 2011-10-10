@@ -84,6 +84,7 @@ ni po wt śr cz pi so   ni po wt śr cz pi so   ni po wt śr cz pi so
  4  5  6  7  8  9 10    8  9 10 11 12 13 14    6  7  8  9 10 11 12
 11 12 13 14 15 16 17   15 16 17 18 19 20 21   13 14 15 16 17 18 19
 ...                    ...                    ...
+
 cal -3my 11 2009 
 
 I jeszcze raz na wrzesień i październik oraz na październik i listopad 2009 r z miesiącami obok siebie (cal, cut?):
@@ -99,3 +100,47 @@ ni po wt śr cz pi so   ni po wt śr cz pi so
 11. Jaki był dzień tygodnia 25 maja 1975 r. (cal i date)
 
 date -d 19750525 +%A
+
+Laboratorium 2
+
+W żadnym z poniższych zadań nie wolno używać programu mc.
+W katalogu c utwórz plik program.c zawierający co najmniej 10 linii kodu napisanego w języku C. (Sam kod należy wyszukać i pobrać z sieci.)
+
+touch nauka/c/program.c
+emacs /nauka/c/program.c &
+skopiowanie jakiegoś programu do program.c i zapisanie C^x C^s
+
+1. Wyświetl na ekran 2 pierwsze wiersze pliku program.c. (head)
+
+less nauka/c/program.c | head -n 2
+
+2. Wyświetl na ekran 4 ostatnie wiersze pliku program.c. (head, tail)
+
+less nauka/c/program.c | tail -n 4
+
+3. W pliku program.c znajdź wszystkie wiersze z wystąpieniem słowa „main”. (grep)
+
+grep -i -n "main" nauka/c/program.c
+
+4. Plikowi program.c nadaj następujące uprawnienia: właściciel – czytanie, pisanie, grupa – czytanie, pozostali użytkownicy: brak uprawnień. (chmod)
+
+chmod 640 nauka/c/program.c
+
+5. Będąc w katalogu temp przenieś katalog wazne-sprawy do katalogu praca.
+
+mv -rf dom/wazne-sprawy praca/wazne-sprawy
+
+6. Zarchiwizuj cały katalog temp. (zip i tar)
+
+zip -r temp.zip temp
+tar zcf temp.tar.gz temp
+
+7. Usuń katalog temp.
+rm -rf temp
+
+8. Odtwórz z archiwum katalog temp. (unzip i tar)
+unzip temp.zip
+tar zxf temp.tar.gz
+
+9. Posprzątaj na swoim koncie.
+rm -rf temp temp.tar temp.zip 	lub	rm -rf tem*
