@@ -144,3 +144,44 @@ tar zxf temp.tar.gz
 
 9. Posprzątaj na swoim koncie.
 rm -rf temp temp.tar temp.zip 	lub	rm -rf tem*
+
+Laboratorium 3
+
+1. Wyświetl plik /etc/passwd z podziałem na strony przyjmując, że strona na 5 linii tekstu.
+
+more -5 ../../etc/passwd 
+
+2. Korzystając z polecenia cat utwórz plik tekst3.txt, który będzie składał się z zawartości pliku tekst1.txt, ciągu znaków podanego ze standardowego wejścia (klawiatury) i pliku tekst2.txt.
+
+mkdir temp; cd temp/ ; echo Ala ma kota > tekst1.txt; echo i wszyscy są zadowoleni > tekst2.txt
+
+cat tekst1.txt - tekst2.txt > tekst3.txt  (ctrl+d)
+
+3. Wyświetl po 5 pierwszych linii wszystkich plików w swoim katalogu domowym w taki sposób, aby nie były wyświetlane ich nazwy.
+
+find ~/ -type f |xargs head -5 -q 
+
+4. Wyświetl linie o numerach 3, 4 i 5 z pliku /etc/passwd.
+
+sed -n 3~1p ~/../../etc/passwd 
+
+5. Wyświetl linie o numerach 7, 6 i 5 od końca pliku /etc/passwd.
+
+tail -n 7 ~/../../etc/passwd | head -n 3
+
+6. Wyświetl zawartość pliku /etc/passwd w jednej linii.
+
+cat ~/../../etc/passwd | tr -d '\n's
+
+7. Za pomocą filtru tr wykonaj modyfikację pliku plik.txt, polegającą na umieszczeniu każdego słowa w osobnej linii.
+
+less plik.txt| tr [:blank:] '\n' | less >> plik.txt
+
+8. Zlicz wszystkie pliki znajdujące się w katalogu /etc i jego podkatalogach.
+
+find ~/../../etc/ -type f | wc -l
+
+9. Napisać polecenie zliczające ilość znaków z pierwszych trzech linii pliku /etc/passwd.
+
+less ~/../../etc/passwd |head -3 |wc -m
+
